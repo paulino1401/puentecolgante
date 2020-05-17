@@ -14,7 +14,7 @@ import java.lang.Thread;
 
 public class Puente extends Application implements EventHandler {
     public Image azul = new Image("Image/mono_azul.png");
-    public ImageView imgazul;
+    public ImageView[] imgazul = new ImageView[4];
     public ImageView imgpuente = new ImageView("Image/puente_col.png");
     private Scene escena;
     private Button btnazul,btnrojo;
@@ -29,8 +29,12 @@ public class Puente extends Application implements EventHandler {
         lpersona = new Label("Con que persona quiere empezar:  ");
 
         btnazul.setOnAction(event -> {
-            pue = new hiloses(gridPane,imgazul);
+            pue = new hiloses(gridPane);
             pue.start();
+          /*  for (int i = 0; i <4 ; i++) {
+                imgazul[i] = new ImageView(azul);
+                gridPane.add(imgazul[i],i,1);
+            }*/
         });
 
         gridPane = new GridPane();

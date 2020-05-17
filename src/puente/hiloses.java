@@ -6,14 +6,19 @@ import javafx.scene.layout.GridPane;
 
 public class hiloses extends  Thread{
     GridPane gridPane;
-    ImageView imgazul;
+    ImageView[] imgazul = new ImageView[4];
     public Image azul = new Image("Image/mono_azul.png");
-    public hiloses(GridPane gridPane, ImageView imgazul){}
+    public hiloses(GridPane gridPane){
+        this.gridPane = gridPane;
+    }
 
     @Override
     public void run() {
         super.run();
-        imgazul = new ImageView(azul);
-        gridPane.add(imgazul,0,1);
+        for (int i = 0; i <4 ; i++) {
+            imgazul[i] = new ImageView(azul);
+            gridPane.add(imgazul[i],i,1);
+        }
+
     }
 }
