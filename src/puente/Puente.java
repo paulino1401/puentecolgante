@@ -46,17 +46,25 @@ public class Puente extends Application implements EventHandler {
             gridPane2.add(imgrojo[i],i+5,0);
         }
         btnazul.setOnAction(event -> {
-            pue = new hiloses(imgazul,imgrojo,0);
+            pue = new hiloses(imgazul,imgrojo,imgpuente,0);
             try{
-                pue.start();
+                for (int i = 0; i <1 ; i++) {
+                    pue.start();
+                }
             }catch(Exception e){}
 
         });
         btnrojo.setOnAction(event -> {
+            pue = new hiloses(imgazul,imgrojo,imgpuente,1);
+            try{
+                for (int i = 0; i <1 ; i++) {
+                    pue.start();
+                }
+            }catch(Exception e){}
 
         });
         vBox.getChildren().addAll(gridPane,gridPane2);
-        escena = new Scene(vBox,900,600);
+        escena = new Scene(vBox,1200,400);
         primaryStage.setTitle("Puente");
         primaryStage.setScene(escena);
         primaryStage.show();

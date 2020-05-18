@@ -2,7 +2,6 @@ package puente;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 
 public class hiloses extends  Thread{
     public ImageView[] imgazul;
@@ -13,10 +12,16 @@ public class hiloses extends  Thread{
     int cont=0;
     int monazul=0;
     int monrojo=0;
+    String num = i+"";
+    String num1 = j+"";
+    public ImageView imgpuente;
+    public Image imgpuenteA = new Image("Image/puente_colA.png");
+    public Image imgpuenteR = new Image("Image/puente_colR.png");
     public Image azul = new Image("Image/mono_azul.png");
     public Image rojo = new Image("Image/mono_rojo.png");
-    public hiloses(ImageView[] imgazul,ImageView[] imgrojo,int opc){
-        this.imgazul=imgazul; this.imgrojo=imgrojo; this.opc = opc;
+    public Image ppuente = new Image("Image/puente_col.png");
+    public hiloses(ImageView[] imgazul,ImageView[] imgrojo,ImageView imgpuente,int opc){
+        this.imgazul=imgazul; this.imgrojo=imgrojo; this.imgpuente=imgpuente; this.opc = opc;
     }
 
     @Override
@@ -27,7 +32,78 @@ public class hiloses extends  Thread{
                 case 0:
                     LibereAzul();
                     monazul++;
-                    while(monazul<4||monrojo<4){
+                    sleep(3000);
+                    imgazul[0].setImage(null);
+                    imgpuente.setImage(imgpuenteA);
+
+                    while(monazul<4||monrojo<=3){
+                        //System.out.println("i: "+i+" j: "+j);
+                        int x =(int)(Math.random()*8000+3000);
+                        int opc= (int)(Math.random()*2);
+                       // System.out.println("MonA: "+monazul+"MonR: "+monrojo+" Tiempo: "+x+"  opc: "+opc+"  i: "+i+"  j: "+j);
+                        switch (opc){
+                            case 0:
+                                if(i<4){
+                                    LibereAzul();
+                                    sleep(1500);
+                                    if(i>j){
+                                        imgazul[i-1].setImage(null);
+                                        imgpuente.setImage(imgpuenteA);
+                                    }else{
+                                        imgrojo[j].setImage(null);
+                                        imgpuente.setImage(imgpuenteR);
+                                    }
+                                    monazul++;
+
+                                }else{
+                                    LibereRojo();
+                                    sleep(1500);
+                                    if(i>j){
+                                        imgazul[i-1].setImage(null);
+                                        imgpuente.setImage(imgpuenteA);
+                                    }else{
+                                        imgrojo[j].setImage(null);
+                                        imgpuente.setImage(imgpuenteR);
+                                    }
+                                    monrojo++;
+                                }
+                                break;
+                            case 1:
+                                if(j<4){
+                                    LibereRojo();
+                                    sleep(1500);
+                                    if(i>j){
+                                        imgazul[i-1].setImage(null);
+                                        imgpuente.setImage(imgpuenteA);
+                                    }else{
+                                        imgrojo[j].setImage(null);
+                                        imgpuente.setImage(imgpuenteR);
+                                    }
+                                    monrojo++;
+                                }else{
+                                    LibereAzul();
+                                    sleep(1500);
+                                    if(i>j){
+                                        imgazul[i-1].setImage(null);
+                                        imgpuente.setImage(imgpuenteA);
+                                    }else{
+                                        imgrojo[j].setImage(null);
+                                        imgpuente.setImage(imgpuenteR);
+                                    }
+                                    monazul++;
+                                }
+                                break;
+                        }
+                        sleep(x);
+
+                    }
+                    System.out.println("a terminado");
+
+                    break;
+                case 1:
+                    LibereRojo();
+                    monrojo++;
+                    while(monazul<=3||monrojo<4){
                         int x =(int)(Math.random()*7000+1000);
                         int opc= (int)(Math.random()*2);
                         System.out.println("MonA: "+monazul+"MonR: "+monrojo+" Tiempo: "+x+"  opc: "+opc+"  i: "+i+"  j: "+j);
@@ -54,8 +130,6 @@ public class hiloses extends  Thread{
                         }
                     }
                     break;
-                case 1:
-                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,7 +139,9 @@ public class hiloses extends  Thread{
     }
 
     public void LibereRojo() {
+        System.out.println("Img Rojo: "+j+"  Img Azul: "+i);
         imgrojo[j].setImage(rojo);
+        imgrojo[j].setId(num1);
         j++;
     }
 
@@ -74,7 +150,10 @@ public class hiloses extends  Thread{
     }
 
     public void LibereAzul() {
+        System.out.println("Img Azul: "+i+"  Img Rojo: "+j);
         imgazul[i].setImage(azul);
+        imgazul[i].setId(num);
         i++;
+
     }
 }
