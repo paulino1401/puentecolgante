@@ -45,50 +45,86 @@ public class hiloses extends  Thread{
                             case 0:
                                 if(i<4){
                                     LibereAzul();
+                                    imgpuente.setImage(ppuente);
                                     sleep(1500);
                                     if(i>j){
                                         imgazul[i-1].setImage(null);
                                         imgpuente.setImage(imgpuenteA);
                                     }else{
-                                        imgrojo[j].setImage(null);
-                                        imgpuente.setImage(imgpuenteR);
+                                        if(j>i){
+                                            imgrojo[j].setImage(null);
+                                            imgpuente.setImage(imgpuenteR);
+                                        }else{
+                                            if(i==j){
+                                                imgrojo[j].setImage(null);
+                                                imgpuente.setImage(imgpuenteR);
+                                            }
+                                        }
+
                                     }
                                     monazul++;
 
                                 }else{
-                                    LibereRojo();
-                                    sleep(1500);
-                                    if(i>j){
-                                        imgazul[i-1].setImage(null);
-                                        imgpuente.setImage(imgpuenteA);
-                                    }else{
-                                        imgrojo[j].setImage(null);
-                                        imgpuente.setImage(imgpuenteR);
+                                    if(j<4) {
+                                        LibereRojo();
+                                        imgpuente.setImage(ppuente);
+                                        sleep(1500);
+                                        if(i>j){
+                                            imgazul[i-1].setImage(null);
+                                            imgpuente.setImage(imgpuenteA);
+                                        }else{
+                                            if(j>i){
+                                                imgrojo[j].setImage(null);
+                                                imgpuente.setImage(imgpuenteR);
+                                            }else{
+                                                if(i==j){
+                                                    imgrojo[j].setImage(null);
+                                                    imgpuente.setImage(imgpuenteR);
+                                                }
+                                            }
+
+                                        }
+                                        monrojo++;
                                     }
-                                    monrojo++;
                                 }
                                 break;
                             case 1:
                                 if(j<4){
                                     LibereRojo();
+                                    imgpuente.setImage(ppuente);
                                     sleep(1500);
-                                    if(i>j){
-                                        imgazul[i-1].setImage(null);
-                                        imgpuente.setImage(imgpuenteA);
-                                    }else{
+                                    if(j>i){
                                         imgrojo[j].setImage(null);
                                         imgpuente.setImage(imgpuenteR);
+                                    }else{
+                                        if(i>j){
+                                            imgazul[i].setImage(null);
+                                            imgpuente.setImage(imgpuenteA);
+                                        }else{
+                                            if(i==j){
+                                                imgazul[i].setImage(null);
+                                                imgpuente.setImage(imgpuenteA);
+                                            }
+                                        }
                                     }
                                     monrojo++;
                                 }else{
                                     LibereAzul();
+                                    imgpuente.setImage(ppuente);
                                     sleep(1500);
-                                    if(i>j){
-                                        imgazul[i-1].setImage(null);
-                                        imgpuente.setImage(imgpuenteA);
-                                    }else{
+                                    if(j>i){
                                         imgrojo[j].setImage(null);
                                         imgpuente.setImage(imgpuenteR);
+                                    }else{
+                                        if(i>j){
+                                            imgazul[i].setImage(null);
+                                            imgpuente.setImage(imgpuenteA);
+                                        }else{
+                                            if(i==j){
+                                                imgazul[i].setImage(null);
+                                                imgpuente.setImage(imgpuenteA);
+                                            }
+                                        }
                                     }
                                     monazul++;
                                 }
