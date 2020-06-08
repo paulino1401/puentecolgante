@@ -1,4 +1,4 @@
-package puente;
+package process;
 
 import javafx.scene.image.ImageView;
 
