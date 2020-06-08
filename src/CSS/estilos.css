@@ -1,0 +1,10 @@
+.root{
+    -fx-background-image: url('/Image/puenteCSS.png');
+    -fx-background-size: 1200 400;
+    -fx-background-repeat: stretch, no-repeat;
+}/* es la escena */
+
+
+
+
+
