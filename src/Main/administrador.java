@@ -23,7 +23,7 @@ public class administrador extends Application implements EventHandler {
         prior.setOnMouseClicked(event -> EventosMenu(2));
         acomodar.getChildren().addAll(equi,prior);
 
-        escena = new Scene(acomodar,150,100);
+        escena = new Scene(acomodar,250,200);
         primaryStage.setMaximized(false);
         primaryStage.setTitle("Sistemas Operativos");
         primaryStage.setScene(escena);

@@ -47,6 +47,7 @@ public class Puente2 extends Stage {
         hBox1 = new HBox(2);
         hBox2 = new HBox(2);
         hBox3 = new HBox(40);
+        imgpuente.setTranslateY(140);
 //---------------------------------------------------------------------------------------------------------------
         for (int i = 0; i <4 ; i++) {
             imgazul[i] = new ImageView();
@@ -69,13 +70,18 @@ public class Puente2 extends Stage {
                 if(event.getClickCount()==1){
                     if(i<4){
                         i++;
-                        imgazul[i].setImage(azul);
-                        pue = new Hilos(imgazul,imgrojo,imgpuente,i,j,0,"a");
                         System.out.println("i "+i+"  j "+j);
+                        imgazul[i].setImage(azul);
+                    }
+                    if(i==3){
+                        i=-1;
+                        pue = new Hilos(imgazul,imgrojo,imgpuente,azul,rojo,0,"b");
                         try{
-                            pue.start();
+                            for (int k = 0; k <1 ; k++) {
+                                pue.start();
+                            }
                         }catch (Exception e){}
-                    }if(i==3){i=-1;}
+                    }
                 }
             }
 
@@ -86,16 +92,18 @@ public class Puente2 extends Stage {
                 if(event.getClickCount()==1){
                     if(j<4){
                         j++;
-                        imgrojo[j].setImage(rojo);
-                        pue = new Hilos(imgazul,imgrojo,imgpuente,i,j,1,"a");
                         System.out.println("i "+i+"  j "+j);
+                        imgrojo[j].setImage(rojo);
+                    }
+                    if(j==3){
+                        j=-1;
+                        pue = new Hilos(imgazul,imgrojo,imgpuente,azul,rojo,1,"b");
                         try{
                             pue.start();
                         }catch (Exception e){}
-                    }if(j==3){j=-1;}
+                    }
                 }
             }
-
         });
 //---------------------------------------------------------------------------------------------------------------
         hBox.getChildren().addAll(texto,btnazul,btnrojo);

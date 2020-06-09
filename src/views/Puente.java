@@ -47,6 +47,7 @@ public class Puente extends Stage {
         hBox1 = new HBox(2);
         hBox2 = new HBox(2);
         hBox3 = new HBox(40);
+        imgpuente.setTranslateY(140);
 //---------------------------------------------------------------------------------------------------------------
         for (int i = 0; i <4 ; i++) {
             imgazul[i] = new ImageView();
